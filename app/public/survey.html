@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>FF Survey</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-10">
+                <div class="card">
+                    <div class="card-header">
+                        Friendface Survey
+                    </div>
+                    <div class="card-body" id="questions">
+                        <h5 class="card-title">Please answer the following questions on a scale from 1-5</h5>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option3">
+                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option3">
+                            <label class="form-check-label" for="inlineRadio3">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option3">
+                            <label class="form-check-label" for="inlineRadio3">5 (strongly agree)</label>
+                        </div>
+
+                        <a href="#" id="submit" class="btn btn-primary">Submit</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var questionArray = ["questionOne", "questionTwo", "questionThree", "questionFour", "questionFive", "questionSix", "questionSeven", "questionEight", "questionNine", "questionTen"]
+            // div elements
+            var cardBody = $(".card-body");
+
+            buildQuestions(questionArray)
+            // build the character cards
+            function buildQuestions(array) {
+                $.each(array, function (index, value) {
+                    var cardText = $("<p/>", { class: "card-text", text: value });
+                    var form = $("<div/>", { class: "form-check form-check-inline" })
+                    var input = $("<input/>", { class: "form-check-input", type: "radio", id: "inlineRadio1" })
+                    var label = $("<label/>", { class: "form-check-label", text: "1 (disagree" })
+
+                    cardText.appendTo(cardBody);
+                    form.appendTo(cardBody);
+                    input.appendTo(form);
+                    label.appendTo(input);
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>
