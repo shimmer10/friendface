@@ -1,3 +1,11 @@
+<!-- //************************************
+* UNH Bootcamp
+*
+* @author Jennifer Grace
+*
+* Friendface Survey
+************************************/-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,31 +31,6 @@
                         Friendface Survey
                     </div>
                     <div class="card-body" id="questions">
-                        <h5 class="card-title">Please answer the following questions on a scale from 1-5</h5>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                value="option2">
-                            <label class="form-check-label" for="inlineRadio2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                                value="option3">
-                            <label class="form-check-label" for="inlineRadio3">5 (strongly agree)</label>
-                        </div>
-
-                        <a href="#" id="submit" class="btn btn-primary">Submit</a>
-
                     </div>
                 </div>
             </div>
@@ -57,27 +40,54 @@
         </div>
     </div>
     <script type="text/javascript">
+        // var fs = require('fs');
+
+        var cardBody = $(".card-body");
+
         $(document).ready(function () {
-            var questionArray = ["questionOne", "questionTwo", "questionThree", "questionFour", "questionFive", "questionSix", "questionSeven", "questionEight", "questionNine", "questionTen"]
+            var questionArray = ["I like pasta", "I like animals", "People are great", "I like movies", "Everyone should drink Pina Coladas", "I want to go to the beach", "I can ride my bike with no handlebars", "I love the sun", "I am a vampire", "I don't need friends"]
             // div elements
-            var cardBody = $(".card-body");
 
             buildQuestions(questionArray)
             // build the character cards
             function buildQuestions(array) {
-                $.each(array, function (index, value) {
-                    var cardText = $("<p/>", { class: "card-text", text: value });
-                    var form = $("<div/>", { class: "form-check form-check-inline" })
-                    var input = $("<input/>", { class: "form-check-input", type: "radio", id: "inlineRadio1" })
-                    var label = $("<label/>", { class: "form-check-label", text: "1 (disagree" })
+                var text = $("<h4>", { class: "card-title", text: "Please answer the following questions on a scale from 1-5" });
+                var range = $("<h4>", { text: "1 = disagree / 5 = strongly agree" })
+                text.appendTo(cardBody);
+                range.appendTo(cardBody);
 
+                $.each(array, function (index, value) {
+                    var cardText = $("<h5/>", { class: "card-text", text: value });
                     cardText.appendTo(cardBody);
-                    form.appendTo(cardBody);
-                    input.appendTo(form);
-                    label.appendTo(input);
+
+                    displayRadioButtons(index)
                 })
+                var space = ($("<div/>"))
+                var submit = $("<a/>", { class: "btn btn-primary", text: "Submit" });
+                space.appendTo(cardBody);
+                submit.appendTo(cardBody);
             }
         });
+
+        function displayRadioButtons(id) {
+            for (var i = 1; i < 6; i++) {
+                var form = $("<div/>", { class: "form-check form-check-inline" })
+                var label = $("<label>");
+                label.addClass("radio-inline ");
+                var input = $("<input>");
+                input.attr("type", "radio");
+                input.attr("name", "question" + id);
+                input.attr("value", i);
+                input.attr("id", "radio-" + i);
+                label.append(input);
+                label.append("  " + i);
+
+                cardBody.append(label);
+                input.appendTo(form);
+                form.appendTo(cardBody);
+
+            }
+        }
     </script>
 </body>
 
