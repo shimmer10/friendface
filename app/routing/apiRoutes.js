@@ -6,21 +6,30 @@
  * Friendface Api Routes
  ************************************/
 
- // Displays all possible friends
-app.get("/api/friends", function(req, res) {
-  return res.json(friends);
-});
+ // file to store and retrieve friend data
+var friendData = require("../data/friends");
 
-// Create New Friend
-app.post("/api/friends", function(req, res) {
-  var newFriend = req.body;
+// routing
+module.exports = function (app) {
 
-  // remove spaces from newFriend
-  newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
+  // Displays all possible friends
+  app.get("/api/friends", function (req, res) {
+    console.log(friends);
+    // return res.json(friends);
+  });
 
-  console.log(newFriend);
+  // Create New Friend
+  app.post("/api/friends", function (req, res) {
+    var newFriend = req.body;
 
-//   friends.push(newFriend);
+    // remove spaces from newFriend
+    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
 
-//   res.json(newFriend);
-});
+    console.log(newFriend);
+
+      // friendsData.push(newFriend);
+
+      // res.json(newFriend);
+  });
+};
+

@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>FF Survey</title>
 </head>
 
@@ -45,6 +46,10 @@
         var cardBody = $(".card-body");
 
         $(document).ready(function () {
+
+            $(".hero").on("click", function () {
+
+            });
             var questionArray = ["I like pasta", "I like animals", "People are great", "I like movies", "Everyone should drink Pina Coladas", "I want to go to the beach", "I can ride my bike with no handlebars", "I love the sun", "I am a vampire", "I don't need friends"]
             // div elements
 
@@ -63,7 +68,7 @@
                     displayRadioButtons(index)
                 })
                 var space = ($("<div/>"))
-                var submit = $("<a/>", { class: "btn btn-primary", text: "Submit" });
+                var submit = $("<a/>", { id="sumbit", class: "btn btn-primary", text: "Submit" });
                 space.appendTo(cardBody);
                 submit.appendTo(cardBody);
             }
